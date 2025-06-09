@@ -6,14 +6,28 @@
 # upgrade_battery(). Убедитесь в том, что запас хода увеличился.
 
 class Battery():
-    def __init__(self, size):
+    def __init__(self, size=70):
         self.size = size
+
     def upgrade_battery(self):
         if self.size != 100:
             self.size = 100
-        else:
-            pass
 
-class Car():
+    def get_range(self):
+        if self.size == 70:
+            range = 240
+        elif self.size == 100:
+            range = 320
+        else:
+            range = 0
+        print(f"Этот автомобиль может пройти примерно {range} миль на полную зарядку.")
+
+class ElectricCar():
     def __init__(self):
-        self.size = 100
+        self.battery = Battery()
+
+# Example usage:
+my_tesla = ElectricCar()
+my_tesla.battery.get_range()
+my_tesla.battery.upgrade_battery()
+my_tesla.battery.get_range()
